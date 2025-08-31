@@ -9,9 +9,7 @@ export const useSocket = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const socketUrl = process.env.NODE_ENV === 'production' 
-      ? `${window.location.protocol}//${window.location.hostname}:3001`
-      : `http://${window.location.hostname}:3001`;
+    const socketUrl = process.env.REACT_APP_SERVER_URL || `http://${window.location.hostname}:3001`;
     
     console.log('Tentative de connexion à:', socketUrl);
     const newSocket = io(socketUrl);
